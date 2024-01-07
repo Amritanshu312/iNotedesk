@@ -27,7 +27,7 @@ const Signup = (props) => {
   const submit = async (e) => {
     e.preventDefault()
     const { name, email, password } = cred
-    const url = 'http://localhost:9000'
+    const url = 'https://i-notedesk.vercel.app'
 
     try {
       const response = await fetch(`${url}/api/auth/createuser`, {

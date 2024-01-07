@@ -5,7 +5,7 @@ import { alertContext } from "./alertContext";
 import { useNavigate } from "react-router-dom";
 
 const NoteState = (props) => {
-  const url = "http://localhost:9000";
+  const url = "https://i-notedesk.vercel.app";
 
   // show alerts
   const [erroralert, setErroralert] = useState({ alert: false, info: { level: "green", errors: "" } })
