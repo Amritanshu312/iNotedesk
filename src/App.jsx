@@ -10,9 +10,6 @@ import Alert from './pop-ups/Alert';
 import { alertContext } from './context/alertContext';
 import { themeContext } from './context/themeContext';
 
-
-
-
 const App = () => {
   const { setShowalert, showalert } = useContext(alertContext)
   const { theme } = useContext(themeContext)

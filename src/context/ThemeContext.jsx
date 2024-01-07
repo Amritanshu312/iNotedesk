@@ -4,7 +4,6 @@ export const themeContext = createContext();
 
 const ThemeState = (props) => {
   const permatheme = localStorage.getItem('theme') || 'dark'
-  console.log(permatheme);
   const [theme, setwebTheme] = useState(permatheme);
 
   const setTheme = (data) => {

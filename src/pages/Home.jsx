@@ -11,10 +11,7 @@ const Home = () => {
   const { getallnotes } = context
 
   useEffect(() => {
-    localStorage.getItem('token') === null ? navigate("/signin") : () => {
-      getallnotes()
-      document.title = "iNotedesk - Your Notes"
-    }
+    localStorage.getItem('token') === null ? navigate("/signin") : getallnotes()
   }, [])
 
 

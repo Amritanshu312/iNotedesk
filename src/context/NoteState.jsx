@@ -24,7 +24,6 @@ const NoteState = (props) => {
   const [Notes, setNotes] = useState([]);
   const [serachnotes, setSearchnote] = useState([])
 
-  console.log(serachnotes);
 
   const [info, serInfo] = useState({});
 
