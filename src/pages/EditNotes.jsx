@@ -12,6 +12,7 @@ const EditNotes = () => {
 
   useEffect(() => {
     localStorage.getItem('token') === null && navigate("/signin")
+    document.title = "iNotedesk - Edit Your Notes"
   }, [])
 
   const { id } = useParams();

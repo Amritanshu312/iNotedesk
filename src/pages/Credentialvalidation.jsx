@@ -7,6 +7,8 @@ import Signup from './Signup'
 const Credentialvalidation = (props) => {
   const [Login, setLogin] = useState(props.signinUI)
 
+  document.title = Login ? "iNotedesk - Log in to your account" : "iNotedesk - Create a account"
+
   return (
     <main className={`${Login && "sign-up-mode"}`}>
       <div className="form__box">
