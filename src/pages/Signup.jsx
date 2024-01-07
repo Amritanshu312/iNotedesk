@@ -39,10 +39,13 @@ const Signup = (props) => {
         body: JSON.stringify({ name, email, password })
       });
 
+      if (response.status !== 200) setShowloading(false)
+
 
       if (response.status === 400) {
         setError({ alert: true, info: { level: "red", errors: "Enter a valid Name, email, passwors" } })
       }
+
       if (response.status === 409) {
         setError({ alert: true, info: { level: "info", errors: "This email has Alredy been used." } })
       }

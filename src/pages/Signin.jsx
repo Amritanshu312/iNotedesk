@@ -41,6 +41,7 @@ const Signin = (props) => {
         body: JSON.stringify({ email, password })
       });
 
+      if (response.status !== 200) setShowloading(false)
 
       if (response.status === 400) {
         setError({ alert: true, info: { level: "red", errors: "Enter a valid email or passwors" } })
