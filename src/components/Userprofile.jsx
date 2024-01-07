@@ -11,7 +11,6 @@ const login = (props) => {
 
   useEffect(() => {
     getuserinfo(); // Calling the function within useEffect
-    console.log('yes');
   }, []);
 
 

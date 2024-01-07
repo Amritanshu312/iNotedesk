@@ -157,6 +157,25 @@ const NoteState = (props) => {
           navigate("/signin")
         }
 
+        if (response.status === 200) {
+          const json = await response.json();
+          const { title, description, tag } = json;
+
+          const editedNote = Notes.map((data) => {
+            if (data._id === json._id) {
+              return {
+                ...data,
+                title,
+                description,
+                tag,
+              };
+            }
+            return { ...data }; // Return a copy of the original 'data'
+          });
+
+          setNotes(editedNote);
+        }
+
       } catch (error) {
         // console.error(error)
       }
