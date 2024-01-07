@@ -9,9 +9,10 @@ import Credentialvalidation from './pages/Credentialvalidation';
 import Alert from './pop-ups/Alert';
 import { alertContext } from './context/alertContext';
 import { themeContext } from './context/themeContext';
+import Loading from './pop-ups/Loading';
 
 const App = () => {
-  const { setShowalert, showalert } = useContext(alertContext)
+  const { setShowalert, showalert, showloading } = useContext(alertContext)
   const { theme } = useContext(themeContext)
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const App = () => {
     <div className={theme === 'dark' ? "darkTheme" : "lightTheme"}>
       <BrowserRouter>
         <NoteState >
+          {showloading && <Loading />}
           {showalert.alert && <Alert error={showalert.info} />}
           <Routes>
             <Route path="/" element={<><Navbar /><Home /></>} />

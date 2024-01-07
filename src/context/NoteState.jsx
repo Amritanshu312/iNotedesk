@@ -9,7 +9,7 @@ const NoteState = (props) => {
 
   // show alerts
   const [erroralert, setErroralert] = useState({ alert: false, info: { level: "green", errors: "" } })
-  const { setShowalert } = useContext(alertContext)
+  const { setShowalert, setShowloading } = useContext(alertContext)
 
   useEffect(() => {
     setShowalert(erroralert)
@@ -30,6 +30,7 @@ const NoteState = (props) => {
 
   const getallnotes = async () => {
     if (auth_token !== null) {
+      setShowloading(true)
       try {
         const response = await fetch(`${url}/api/notes/fetchallnotes`, {
           method: "GET",
@@ -39,10 +40,12 @@ const NoteState = (props) => {
           },
         });
 
+        if (response.status) setShowloading(false)
 
         if (response.status === 401) {
           navigate("/signin")
         }
+
 
         const json = await response.json();
         setNotes(json);
@@ -52,6 +55,7 @@ const NoteState = (props) => {
 
   const addnotes = async (data) => {
     if (auth_token !== null) {
+      setShowloading(true)
       try {
         const response = await fetch(`${url}/api/notes/addnote`, {
           method: "post",
@@ -65,6 +69,8 @@ const NoteState = (props) => {
             tag: data.tag,
           }),
         });
+
+        if (response.status) setShowloading(false)
 
         if (response.status === 401) {
           navigate("/signin")
@@ -84,6 +90,7 @@ const NoteState = (props) => {
 
   const deletenotes = async (_id) => {
     if (auth_token !== null) {
+      setShowloading(true)
       try {
         const response = await fetch(`${url}/api/notes/deletenote/${_id}`, {
           method: "delete",
@@ -93,10 +100,11 @@ const NoteState = (props) => {
           },
         });
 
+        if (response.status) setShowloading(false)
+
         if (response.status === 404) {
           setErroralert({ alert: true, info: { level: "danger", errors: "Note doesn't found" } })
         }
-
 
         if (response.status === 401) {
           navigate("/signin")
@@ -117,6 +125,7 @@ const NoteState = (props) => {
   };
   const editnotes = async (_id, data) => {
     if (auth_token !== null) {
+      setShowloading(true)
       try {
         const response = await fetch(`${url}/api/notes/updatenote/${_id}`, {
           method: "put",
@@ -130,6 +139,8 @@ const NoteState = (props) => {
             tag: data.tag,
           }),
         });
+
+        if (response.status) setShowloading(false)
 
         if (response.status === 404) {
           setErroralert({ alert: true, info: { level: "danger", errors: "Note doesn't found" } })
@@ -158,10 +169,6 @@ const NoteState = (props) => {
 
         if (response.status === 401) {
           navigate("/signin")
-        }
-
-        if (response.status === 204) {
-          console.log("yesd");
         }
 
         const json = await response.json();

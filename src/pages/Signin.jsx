@@ -7,7 +7,7 @@ import { alertContext } from '../context/alertContext'
 
 const Signin = (props) => {
   const { setAuthToken } = useContext(noteContext)
-  const { setShowalert } = useContext(alertContext)
+  const { setShowalert, setShowloading } = useContext(alertContext)
 
   const [error, setError] = useState({ alert: false, info: { level: "green", errors: "" } })
 
@@ -28,6 +28,7 @@ const Signin = (props) => {
 
   const submit = async (e) => {
     e.preventDefault()
+    setShowloading(true)
     const { email, password } = cred
     const url = 'https://i-notedesk.vercel.app'
 
@@ -39,6 +40,7 @@ const Signin = (props) => {
         },
         body: JSON.stringify({ email, password })
       });
+
 
       if (response.status === 400) {
         setError({ alert: true, info: { level: "red", errors: "Enter a valid email or passwors" } })
@@ -64,10 +66,6 @@ const Signin = (props) => {
           return setError({ alert: true, info: { level: "red", errors: "There seem to be a error" } })
         }
       }
-
-
-
-
     } catch (error) {
 
     }

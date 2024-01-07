@@ -7,9 +7,10 @@ const AlertState = (props) => {
     alert: false,
     info: { level: "", errors: "" },
   });
+  const [showloading, setShowloading] = useState(false);
 
   return (
-    <alertContext.Provider value={{ showalert, setShowalert }}>
+    <alertContext.Provider value={{ showalert, setShowalert, showloading, setShowloading }}>
       {props.children}
     </alertContext.Provider>
   );
