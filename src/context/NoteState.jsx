@@ -84,6 +84,7 @@ const NoteState = (props) => {
 
         if (response.status === 200) {
           setErroralert({ alert: true, info: { level: "green", errors: "Note added sucessfully" } })
+          navigate("/")
         }
 
       } catch (error) { }
