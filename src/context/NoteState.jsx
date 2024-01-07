@@ -43,6 +43,7 @@ const NoteState = (props) => {
         if (response.status) setShowloading(false)
 
         if (response.status === 401) {
+          localStorage.removeItem('token')
           navigate("/signin")
         }
 
@@ -73,6 +74,7 @@ const NoteState = (props) => {
         if (response.status) setShowloading(false)
 
         if (response.status === 401) {
+          localStorage.removeItem('token')
           navigate("/signin")
         }
 
@@ -107,6 +109,7 @@ const NoteState = (props) => {
         }
 
         if (response.status === 401) {
+          localStorage.removeItem('token')
           navigate("/signin")
         }
 
@@ -147,6 +150,7 @@ const NoteState = (props) => {
         }
 
         if (response.status === 401) {
+          localStorage.removeItem('token')
           navigate("/signin")
         }
 
@@ -168,11 +172,14 @@ const NoteState = (props) => {
         });
 
         if (response.status === 401) {
+          localStorage.removeItem('token')
           navigate("/signin")
         }
 
-        const json = await response.json();
-        serInfo(json.user);
+        if (response.status === 200) {
+          const json = await response.json();
+          serInfo(json.user);
+        }
 
         // console.log(info);
       } catch (error) {

@@ -11,7 +11,7 @@ const Home = () => {
   const { getallnotes } = context
 
   useEffect(() => {
-    localStorage.getItem('token') === null ? navigate("/signin") : getallnotes()
+    localStorage.getItem('token') === null || localStorage.getItem('token') === '' ? navigate("/signin") : getallnotes()
   }, [])
 
 

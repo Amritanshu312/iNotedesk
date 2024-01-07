@@ -54,8 +54,8 @@ const Signin = (props) => {
         const json = await response.json();
         if (json.authToken) {
           try {
-            setAuthToken(json.authToken)
             localStorage.setItem('token', json.authToken);
+            setAuthToken(json.authToken)
             navigate('/');
 
           } catch (error) {
