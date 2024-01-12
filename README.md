@@ -24,3 +24,23 @@ To run iNotedesk locally, follow these steps:
 ```bash
 git clone https://github.com/your-username/iNotedesk.git
 cd iNotedesk
+```
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Set up MongoDB Database locally or in MongoDB cluster:
+4. Create .env file then add MongoDB connection string:
+   example ⬇⬇
+```
+BACKEND_NAME='[Your backend Name]'
+BACKEND_PASSWORD='[your backend password]'
+PORT = 9000
+```
+5. Finally start the application:
+   
+```
+npm start
+```
